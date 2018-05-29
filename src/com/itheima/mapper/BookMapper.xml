@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace表示命名空间 -->
+<mapper namespace="com.itheima.mapper.BookMapper">
+
+
+
+
+
+	<!--根据客户名、工作模糊查询客户信息列表-->
+	<select id="findBookByCondiction" parameterType="com.itheima.po.Book"
+			resultType="com.itheima.po.Book">
+	     select * from books
+
+          <where>
+            <if test="bookname!=null and bookname!=''">
+				and bookname like '%${bookname}%'
+			</if>
+			<if test="isbn!=null and isbn!=''">
+				and jobs isbn '%${isbn}%'
+			</if>
+              <if test="auto!=null and auto!=''">
+                  and auto like '%${auto}%'
+              </if>
+			  <if test="address!=null and address!=''">
+				  and address like '%${address}%'
+			  </if>
+		  </where>
+	</select>
+
+
+</mapper>
